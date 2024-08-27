@@ -11,11 +11,11 @@ At Cozy Mae Floral, we specialize in personal, handcrafted arrangements that not
 
 
 ### Design:
-<!-- Include at least 1 photo of your design of the application --!>
+[//]: # (Include at least 1 photo of the design here)
 
 
 ### Key Features:
-<!-- Just a description of your key features --!>
+[//]: # (Just a description of the features we will add)
 
 - Secure login over HTTPS
 - 
