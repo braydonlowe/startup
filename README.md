@@ -17,6 +17,27 @@ At Cozy Mae Floral, we specialize in personal, handcrafted arrangements that not
 ### Key Features:
 <!-- Just a description of your key features --!>
 
+- Secure login over HTTPS
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
 
 ### Technologies:
+
 The following technologies will be used in the following ways:
+
+- **HTML** - 
+- **CSS** - 
+- **React** - 
+- **Service** - 
+  - 
+  - 
+  - 
+  - 
+- **DB/Login** - 
+- **WebSocket** - 
