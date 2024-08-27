@@ -11,9 +11,12 @@ At Cozy Mae Floral, we specialize in personal, handcrafted arrangements that not
 
 
 ### Design:
+<!-- Include at least 1 photo of your design of the application --!>
 
 
 ### Key Features:
+<!-- Just a description of your key features --!>
 
 
 ### Technologies:
+The following technologies will be used in the following ways:
