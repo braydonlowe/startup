@@ -33,11 +33,12 @@ The following technologies will be used in the following ways:
 
 - **HTML** - 
 - **CSS** - 
-- **React** - 
-- **Service** - 
+- **React** - Login,
+- **Service** - Backend service with endpoints for:
+  - Loging in
+  - Appointments
+  - Contract viewing
   - 
   - 
-  - 
-  - 
-- **DB/Login** - 
-- **WebSocket** - 
+- **DB/Login** - Store users, appointments, and PDF contracts. Register and login users. Credentials securely stored in database. Can't view appointment or see contracts unless authenticated.
+- **WebSocket** - Schedule availability in the schedule is updated to each user when the schedule is changed.
