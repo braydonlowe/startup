@@ -18,27 +18,25 @@ At Cozy Mae Floral, we specialize in personal, handcrafted arrangements that not
 [//]: # (Just a description of the features we will add)
 
 - Secure login over HTTPS
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+- Ability to see scheduled availability, set by the admin, on a calendar.
+- Admin ability to send PDF contracts through a third party service.
+- User ability to sign contracts through a third party service.
+- Ability to see upcoming appointments.
+- Admin ability to see progress of contracts.
 
 
 ### Technologies:
 
 The following technologies will be used in the following ways:
 
-- **HTML** - 
-- **CSS** - 
-- **React** - Login,
+- **HTML** - Structure of the web pages. The skeleton the login page, calendar views and contract pages.
+- **CSS** - Styling for the entire we application. Both for desktop and mobile use.
+- **React** - User interface for secure login, viewing scheduled availability, displaying appointments, and interacting with the contract system.
 - **Service** - Backend service with endpoints for:
   - Loging in
-  - Appointments
+  - Managing ppointments
   - Contract viewing
-  - 
-  - 
+  - Admin functionalities for sending contracts and tracking their progress.
+  - Managing schedule availibility.
 - **DB/Login** - Store users, appointments, and PDF contracts. Register and login users. Credentials securely stored in database. Can't view appointment or see contracts unless authenticated.
-- **WebSocket** - Schedule availability in the schedule is updated to each user when the schedule is changed.
+- **WebSocket** - Real-time updates to the calendar when the schedule is modified by the admin, automatically reflecting changes for all users.
