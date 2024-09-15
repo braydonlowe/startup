@@ -12,6 +12,9 @@ At Cozy Mae Floral, we specialize in personal, handcrafted arrangements that not
 
 ### Design:
 [//]: # (Include at least 1 photo of the design here)
+![Home Page](./Pictures/HomePage.png)
+![Contract Page](./Pictures/ContractsPage.png)
+![Calendar Page](./Pictures/CalendarPage.png)
 
 
 ### Key Features:
