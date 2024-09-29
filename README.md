@@ -50,7 +50,16 @@ The following technologies will be used in the following ways:
 ➡️ The following is part of my HTML Deliverable.
 
 
-- [x] **Deployed Simon HTML** - Deployed simon to simon.cozymaefloral.com as part of the prerequisite.
-- [ ] **Github Link** - Github link is displayed on the home page.
-- [ ] **Header and Footer** - Header and footers completed for each page.
-- [ ] **Login Page**
+- [x] Deployed Simon HTML - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
+- [x] GitHub Link - GitHub link is displayed on the home page.
+- [x] Header and Footer - Header and footers completed for every page except for the login and register pages.
+- [x] Login Page - A place to log in.
+- [x] Register Page - A place to register a new user.
+- [x] Placeholder Elements - Placeholders for contracts and calendar.
+- [x] Home Page (index.html) - Created an index.html serving as the homepage with navigation and welcome message.
+- [x] CSS Styling - Implemented CSS for overall styling, ensuring responsiveness for desktop and mobile.
+- [x] Service Layer - Backend service endpoints for login, appointment management, contract viewing, and schedule availability.
+- [x] Database Integration - Set up a database structure to store users, appointments, and contracts, with secure login functionality.
+- [x] WebSocket Setup - Included placeholders for WebSocket functionality to provide real-time updates on the calendar.
+- [x] HTML Structure - Ensured proper use of HTML tags including BODY, NAV, MAIN, HEADER, and FOOTER across all pages.
+- [x] Interactivity - Added JavaScript placeholders for future interactivity and service integration.
