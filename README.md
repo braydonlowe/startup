@@ -51,3 +51,6 @@ The following technologies will be used in the following ways:
 
 
 - [x] **Deployed Simon HTML** - Deployed simon to simon.cozymaefloral.com as part of the prerequisite.
+- [ ] **Github Link** - Github link is displayed on the home page.
+- [ ] **Header and Footer** - Header and footers completed for each page.
+- [ ] **Login Page**
