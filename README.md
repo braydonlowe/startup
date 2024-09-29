@@ -43,3 +43,11 @@ The following technologies will be used in the following ways:
   - Managing schedule availibility.
 - **DB/Login** - Store users, appointments, and PDF contracts. Register and login users. Credentials securely stored in database. Can't view appointment or see contracts unless authenticated.
 - **WebSocket** - Real-time updates to the calendar when the schedule is modified by the admin, automatically reflecting changes for all users.
+
+
+
+## HTML Deliverable
+➡️ The following is part of my HTML Deliverable.
+
+
+- [x] **Deployed Simon HTML** - Deployed simon to simon.cozymaefloral.com as part of the prerequisite.
