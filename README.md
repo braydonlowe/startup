@@ -64,3 +64,10 @@ The following technologies will be used in the following ways:
 - [x] **WebSocket Setup** - Included placeholders for WebSocket functionality to provide real-time updates on the calendar.
 - [x] **HTML Structure** - Ensured proper use of HTML tags including BODY, NAV, MAIN, HEADER, and FOOTER across all pages.
 - [x] **Interactivity** - Added JavaScript placeholders for future interactivity and service integration.
+
+
+## CSS Deliverable
+➡️ The following is part of my CSS Deliverable.
+
+
+- [x] **Deployed Simon CSS** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
