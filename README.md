@@ -71,3 +71,5 @@ The following technologies will be used in the following ways:
 
 
 - [x] **Deployed Simon CSS** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
+- [x] **Added Company Submark as Icon** - Added a picture of a flower to act as the icon for the tab in the browser.
+- [x] **Added Conditional Visibility Of Logo** - If the CozyMae Floral logo fails to load. The alternate text will load. This was added as a condition through the CSS, image-alt class.

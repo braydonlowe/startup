@@ -48,6 +48,18 @@ li:hover {
     color: #9c1b1b;
 }
 
+.image-alt {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    color: #9c1b1b;
+    padding: 20px;
+    display: none;
+}
+
+img:not([src]) + .image-alt {
+    display: inline;
+}
+
 a {
     text-decoration: none;
     color: #9c1b1b;
