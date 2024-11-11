@@ -1,7 +1,21 @@
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the wrapper takes the full viewport height */
+    align-items: center;
 }
 
 header {
@@ -11,6 +25,26 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically within main */
+    padding: 20px;
+    text-align: center; /* Centers text inside sections */
+    width: 100%;
+    max-width: 800px; /* Limit max width for readability */
+}
+
+footer {
+    width: 100%;
+    background-color: #f9e4dc;
+    text-align: center;
+    padding: 15px 0;
+    color: #9c1b1b;
 }
 
 /*To get the nav elements to go to full width*/
@@ -67,6 +101,28 @@ a {
 
 .tan-pearl-text {
     font-family: 'Tan Pearl', sans-serif;
+}
+
+
+.auth-button {
+    position: absolute;
+    margin-top: 10px;
+    top: 25px;
+    right:20px;
+
+}
+
+.auth-button a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #f27d7d;
+    border-radius: 5px;
+}
+
+.auth-button a:hover {
+    color: #f9e4dc;
 }
 
 
