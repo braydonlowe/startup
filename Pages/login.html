@@ -1,24 +1,38 @@
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../CSS/login_register.css">
+    <link rel="stylesheet" href="../CSS/shared.css"> <!-- Fixed missing closing tag -->
 </head>
 <body>
-    <header>
-        <h1>Login</h1>
-    </header>
-    <main>
-        <form action="/login" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="register.html">Register here</a></p>
+    <div class="wrapper">
+        <main>
+            <div class="auth-container">
+                <div class="logo-top">
+                    <img src="../Pictures/CozyMae_FullLogo.png" alt="CozyMae Floral" width="200" height="84" />
+                </div>
+                <form action="/login" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+                <div class="logo-bottom">
+                    <img src="../Pictures/CozyMae_LogoSubmark.png" width="170" height="100">
+                </div>
+            </div>
     </main>
+
     <footer>
         <p>&copy; 2024 CozyMaeFloral. All rights reserved.</p>
     </footer>
+
+    </div>
+    
 </body>
 </html>
