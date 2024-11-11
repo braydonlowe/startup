@@ -131,6 +131,24 @@ a {
 }
 
 
+.spaced-button {
+    margin: 10px 0;
+    padding: 10px 20px; /* Increase padding for a larger button */
+    margin: 10px 0; /* Add vertical spacing */
+    font-size: 1em;
+    background-color: #f27d7d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.spaced-button:hover {
+    background-color: #f9e4dc; /* Optional hover effect */
+    color: #9c1b1b;
+}
+
+
 
 /*Maroon Text color: 9c1b1b*/
 /*Salmon Text Highlight Color: f27d7d*/
