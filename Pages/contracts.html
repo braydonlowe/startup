@@ -4,30 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contracts</title>
+    <link rel="stylesheet" href="../CSS/shared.css">
+        <!-- Font Links -->
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+        <link rel="icon" type="image/png" href="../Pictures/CozyMae_LogoSubmark_Square.png">
 </head>
 <body>
-    <header>
-        <h1>Contracts</h1>
-        <nav> <!--Conditional visibility will be added with react-->
-            <a href="../index.html">Home</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="calendar.html">Calendar</a>
-            <a href="appointments.html">Appointments</a>
-            <a href="profile.html">Profile</a>
-            <a href="admin.html">Admin</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Your Contracts</h2>
-        <ul>
-            <li>Contract 1: <a href="contract1.pdf" target="_blank">View</a></li>
-            <li>Contract 2: <a href="contract2.pdf" target="_blank">View</a></li>
-            //Contracts are stored in the database
-            <!-- List of contracts goes here Will be stored in Database-->
-        </ul>
-    </main>
-    <footer>
-        <p>&copy; 2024 CozyMaeFloral. All rights reserved.</p>
-    </footer>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <a href="../index.html">
+                    <img src="../Pictures/CozyMae_FullLogo.png" alt="CozyMae Floral" width="200" height="84" />
+                    <span class="image-alt">CozyMae Floral</span>
+                </a>
+            </h1>
+            
+            <nav> <!--Conditional visibility will be added with react-->
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="calendar.html">Calendar</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+                
+            </nav>
+        </header>
+        <main>
+            <h2>Contracts</h2>
+            <h3>Your Contracts</h3>
+            <ul>
+                <li>Contract 1: <a href="contract1.pdf" target="_blank">View</a></li>
+                <li>Contract 2: <a href="contract2.pdf" target="_blank">View</a></li>
+                //Contracts are stored in the database
+                <!-- List of contracts goes here Will be stored in Database-->
+            </ul>
+        </main>
+        <footer>
+            <p>&copy; 2024 CozyMaeFloral. All rights reserved.</p>
+        </footer>
+    </div>
+    
 </body>
 </html>
