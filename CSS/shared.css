@@ -1,29 +1,67 @@
-*{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 header {
     width: 100%;
-    background-color: hsl(35, 82%, 70%);
+    background-color: #f0c1af;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/*To get the nav elements to go to full width*/
+nav {
+    width: 100%;
+}
+
 nav ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 20px 0;
     width: 100%;
+    background-color: #f9e4dc;
 }
 
 li {
     flex: 1;
+    padding: 0 15px;
     text-align: center;
     display: flex;
     justify-content: space-around;
 }
+
+li:hover {
+    background-color: #f27d7d;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.header-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    color: #9c1b1b;
+}
+
+a {
+    text-decoration: none;
+    color: #9c1b1b;
+}
+
+.tan-pearl-text {
+    font-family: 'Tan Pearl', sans-serif;
+}
+
+
+
+/*Maroon Text color: 9c1b1b*/
+/*Salmon Text Highlight Color: f27d7d*/
+/*Skin Background Color: f0c1af*/
+/*Tan Background Background Color: f9e4dc*/
+/*Purple Highlight: ddcce9*/
+/*Green Highlight Color: c5d4b7*/
