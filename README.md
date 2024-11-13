@@ -77,3 +77,10 @@ The following technologies will be used in the following ways:
 - [x] **Responsive Sizing** - Text stays centered on the page as the page changes size.
 - [x] **Login Register Button** - Login/Register button was created on the home page. It is styled appropriately, and has it's position fixed using CSS.
 - [x] **Login/Register Page CSS** - Login and register pages now have their own CSS. I liked it better without the footer so that was removed. It now is a centered box on the middle of the page. It also responds to resizing.
+
+
+## React Deliverable
+➡️ The following is part of my React Deliverable.
+
+
+-[] **Deploy Simon React** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
