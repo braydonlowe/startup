@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomePage = () => {
+export const Home = () => {
   return (
     <div className="wrapper">
       <header>
@@ -51,5 +51,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;
