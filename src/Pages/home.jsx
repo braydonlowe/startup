@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "./Components/Header"
+import { Footer } from "./Components/Footer"
 
 export const Home = () => {
   return (
@@ -23,9 +24,7 @@ export const Home = () => {
           <a href="https://github.com/braydonlowe/startup">Startup Repo</a>
         </section>
       </main>
-      <footer>
-        <p>&copy; 2024 CozyMaeFloral. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
