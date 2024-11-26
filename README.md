@@ -83,4 +83,5 @@ The following technologies will be used in the following ways:
 ➡️ The following is part of my React Deliverable.
 
 
--[] **Deploy Simon React** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
+-[x] **Clone the Simon React** - Cloned the Simon React package to my dev enviornment.
+-[x] **Deploy Simon React** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
