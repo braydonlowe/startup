@@ -1,0 +1,49 @@
+.calendar-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9e4dc; /* Matching color scheme */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.controls select,
+.controls input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    background-color: #f27d7d;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.day .availability {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #f9e4dc;
+}
+
+.empty {
+    visibility: hidden;
+}
