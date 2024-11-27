@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../Components/Header/Header"
-import { Footer } from "../Components/Header/Header"
-//Import new CSS for the tabs. Put it in with the components.
+import { Footer } from "../Components/Footer/Footer"
+import './tabs.css'
 
 
 

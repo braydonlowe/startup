@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
     // Eventually replace this with the role check
@@ -10,10 +11,8 @@ export const Header = () => {
             case "User":
                 return (
                     <ul>
-                        <li><a href="Pages/home.html">Home</a></li>
-                        <li><a href="Pages/dashboard.html"></a>Dashboard</li>
-                        <li><a href="Pages/contracts.html">Contracts</a></li>
-                        <li><a href="Pages/profile.html"></a>Profile</li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
                     </ul>
                 )
             case "Admin":
@@ -21,8 +20,6 @@ export const Header = () => {
                     <ul>
                         <li><a href="Pages/home.html">Home</a></li>
                         <li><a href="Pages/dashboard.html"></a>Dashboard</li>
-                        <li><a href="Pages/contracts.html">Contracts</a></li>
-                        <li><a href="Pages/profile.html"></a>Profile</li>
                     </ul>
                 )
             default:

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './Pages/Home/home';
+import Dashboard from './Pages/Dashboard/dashboard';
+import { Header } from './Pages/Components/Header/Header';
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
             <div>
                 <Routes>
                     <Route path = "/" element={<Home/>} />
+                    <Route path = "/dashboard" element={<Dashboard />} />
                 </Routes>
             </div>
         </BrowserRouter>
