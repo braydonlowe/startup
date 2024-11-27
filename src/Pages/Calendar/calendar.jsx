@@ -44,25 +44,32 @@ const Calendar = () => {
     };
 
     return (
-        <div className="calendar-container">
-            <div className="controls">
-                <select value={selectedDate.month} onChange={handleMonthChange}>
-                    {Array.from({ length: 12 }, (_, index) => (
-                        <option key={index} value={index}>
-                            {new Date(0, index).toLocaleString('default', { month: 'long' })}
-                        </option>
-                    ))}
-                </select>
-                <input
-                    type="number"
-                    value={selectedDate.year}
-                    onChange={handleYearChange}
-                    min="2000"
-                    max="2100"
-                />
+        <div class="wrapper">
+            <Header />
+            <div className="calendar-container">
+                <div className="controls">
+                    <select value={selectedDate.month} onChange={handleMonthChange}>
+                        {Array.from({ length: 12 }, (_, index) => (
+                            <option key={index} value={index}>
+                                {new Date(0, index).toLocaleString('default', { month: 'long' })}
+                            </option>
+                        ))}
+                    </select>
+                    <input
+                        type="number"
+                        value={selectedDate.year}
+                        onChange={handleYearChange}
+                        min="2000"
+                        max="2100"
+                    />
+                </div>
+                <div className="calendar-grid">{renderDays()}</div>
             </div>
-            <div className="calendar-grid">{renderDays()}</div>
+            <Footer />
+
+
         </div>
+        
     );
 }
 

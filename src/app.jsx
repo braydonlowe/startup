@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './Pages/Home/home';
 import Dashboard from './Pages/Dashboard/dashboard';
+import Calendar from './Pages/Calendar/calendar';
 import { Header } from './Pages/Components/Header/Header';
 
 
@@ -20,6 +21,7 @@ function App() {
                 <Routes>
                     <Route path = "/" element={<Home/>} />
                     <Route path = "/dashboard" element={<Dashboard />} />
+                    <Route path = "/calendar" element={<Calendar />} />
                 </Routes>
             </div>
         </BrowserRouter>
