@@ -1,15 +1,26 @@
+.data-view {
+    border-radius: 8px;
+    width: 90%;
+}
+
 .tabs-container {
-    width: 100%;
-    margin-top: 20px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 8px;
 }
 
 .tabs-nav {
     display: flex;
     justify-content: center;
-    background-color: #f9e4dc;
+    background-color: #f0c1af; /* Skin background */
     padding: 10px 0;
     border-bottom: 2px solid #ddcce9;
     gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 .tabs-nav button {
@@ -42,9 +53,7 @@
 .tabs-content {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ddcce9; /* Purple highlight */
     border-radius: 5px;
-    background-color: #f0c1af; /* Skin background */
     color: #9c1b1b; /* Maroon text */
     font-family: 'Poppins', sans-serif;
 }

@@ -30,7 +30,7 @@ function Dashboard() {
     return (
         <div className="wrapper">
             <Header />
-
+            <div class="data-view">
             <nav className="tabs-nav">
                     <button
                         className={activeTab === 'Appointments' ? 'active' : ''}
@@ -47,6 +47,9 @@ function Dashboard() {
                 </nav>
 
                 <main>{renderContent()}</main>
+
+            </div>
+           
 
 
 
