@@ -3,6 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './Pages/Home/home';
 import Dashboard from './Pages/Dashboard/dashboard';
 import Calendar from './Pages/Calendar/calendar';
+import Login from './Pages/LoginRegister/login_register';
 import { Header } from './Pages/Components/Header/Header';
 
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path = "/" element={<Home/>} />
                     <Route path = "/dashboard" element={<Dashboard />} />
                     <Route path = "/calendar" element={<Calendar />} />
+                    <Route path = "/login" element={<Login />} />
                 </Routes>
             </div>
         </BrowserRouter>
