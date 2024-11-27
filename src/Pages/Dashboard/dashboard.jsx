@@ -1,12 +1,52 @@
 import React from "react";
 import { Header } from "../Components/Header/Header"
 import { Footer } from "../Components/Header/Header"
+//Import new CSS for the tabs. Put it in with the components.
 
 
-export const Dashboard = () => {
+
+function Dashboard() {
+    const [activeTab, setActiveTab] = useState("Appointments");
+
+    const renderContent = () => {
+        if (activeTab === 'Appointments') {
+            return (
+                <div className="tabs-content">
+                    <h2>Appointments</h2>
+                    <p>Here you can manage your appointments</p>
+                </div>
+            );
+        } else if (activeTab === 'Contracts') {
+            return (
+                <div className="tabs-content">
+                    <h2>Contracts</h2>
+                    <p>Here you can manage your contracts.</p>
+                    {/* Add more contracts-related content here */}
+                </div>
+            );
+        }
+    };
+
     return (
         <div className="wrapper">
             <Header />
+
+            <nav className="tabs-nav">
+                    <button
+                        className={activeTab === 'Appointments' ? 'active' : ''}
+                        onClick={() => setActiveTab('Appointments')}
+                    >
+                        Appointments
+                    </button>
+                    <button
+                        className={activeTab === 'Contracts' ? 'active' : ''}
+                        onClick={() => setActiveTab('Contracts')}
+                    >
+                        Contracts
+                    </button>
+                </nav>
+
+                <main>{renderContent()}</main>
 
 
 
@@ -14,3 +54,6 @@ export const Dashboard = () => {
         </div>
     )
 }
+
+
+export default Dashboard;
