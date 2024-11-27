@@ -50,6 +50,12 @@ function Dashboard() {
                     >
                         Contracts
                     </button>
+                    <button
+                        className={activeTab === 'Profile' ? 'active' : ''}
+                        onClick={() => setActiveTab('Profile')}
+                    >
+                        Profile
+                    </button>
                 </nav>
 
                 <main>{renderContent()}</main>
