@@ -24,6 +24,12 @@ function Dashboard() {
                     {/* Add more contracts-related content here */}
                 </div>
             );
+        } else if (activeTab == "Profile") {
+            return (
+                <div className="tabs-content">
+                    <h2>Profile</h2>
+                </div>
+            )
         }
     };
 
