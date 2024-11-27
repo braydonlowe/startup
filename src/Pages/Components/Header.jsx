@@ -16,6 +16,15 @@ export const Header = () => {
                         <li><a href="Pages/profile.html"></a>Profile</li>
                     </ul>
                 )
+            case "Admin":
+                return (
+                    <ul>
+                        <li><a href="Pages/home.html">Home</a></li>
+                        <li><a href="Pages/dashboard.html"></a>Dashboard</li>
+                        <li><a href="Pages/contracts.html">Contracts</a></li>
+                        <li><a href="Pages/profile.html"></a>Profile</li>
+                    </ul>
+                )
             default:
                 return (
                     <ul>
