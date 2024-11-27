@@ -19,15 +19,16 @@ export const Header = () => {
             case "Admin":
                 return (
                     <ul>
-                        <li><a href="Pages/home.html">Home</a></li>
-                        <li><a href="Pages/dashboard.html"></a>Dashboard</li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                        <li><NavLink to="/calendar">Calendar</NavLink></li>
                     </ul>
                 )
             default:
                 return (
                     <ul>
                         <li><a href="Pages/home.html">Home</a></li>
-                        <li><a href="Pages/calendar.html">Calendar</a></li>
+                        <li><NavLink to="/calendar">Calendar</NavLink></li>
                     </ul>
                 )
         }
