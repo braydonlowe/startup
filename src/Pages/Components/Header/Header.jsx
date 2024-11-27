@@ -13,6 +13,7 @@ export const Header = () => {
                     <ul>
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                        <li><NavLink to="/calendar">Calendar</NavLink></li>
                     </ul>
                 )
             case "Admin":
