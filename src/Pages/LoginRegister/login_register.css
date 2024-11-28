@@ -77,12 +77,7 @@ label {
     font-size: 12px;
 }
 
-#email {
-    height: 15%;
-    max-height: 30px;
-}
-
-#password {
+#email, #confirmPassword, #password {
     height: 15%;
     max-height: 30px;
 }

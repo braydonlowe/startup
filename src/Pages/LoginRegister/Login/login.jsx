@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../login_register.css";
 
 export const Login = () => {
@@ -27,7 +28,7 @@ export const Login = () => {
                     </div>
                    
                     <p>
-                    Don't have an account? <a href="/register">Register here</a>
+                    Don't have an account? <NavLink to="/register">Register Here</NavLink>
                     </p>
                     <div className="logo-bottom">
                     <img src="../Pictures/CozyMae_LogoSubmark.png" width="90" height="50" alt="Submark" />

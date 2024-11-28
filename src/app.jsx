@@ -4,6 +4,7 @@ import { Home } from './Pages/Home/home';
 import Dashboard from './Pages/Dashboard/dashboard';
 import Calendar from './Pages/Calendar/calendar';
 import Login from './Pages/LoginRegister/Login/login';
+import Register from './Pages/LoginRegister/Register/register';
 import { Header } from './Pages/Components/Header/Header';
 
 
@@ -24,6 +25,7 @@ function App() {
                     <Route path = "/dashboard" element={<Dashboard />} />
                     <Route path = "/calendar" element={<Calendar />} />
                     <Route path = "/login" element={<Login />} />
+                    <Route path = "/register" element={<Register />} />
                 </Routes>
             </div>
         </BrowserRouter>
