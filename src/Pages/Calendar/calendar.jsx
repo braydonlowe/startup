@@ -45,7 +45,7 @@ const Calendar = () => {
     };
 
     return (
-        <div class="wrapper">
+        <div className="wrapper">
             <Header />
             <div className="calendar-container">
                 <div className="controls">

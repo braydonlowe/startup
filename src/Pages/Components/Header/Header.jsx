@@ -40,10 +40,10 @@ export const Header = () => {
             <h1>
                 <NavLink to="/">
                     <img id="logo" src="../Pictures/CozyMae_FullLogo.png" alt="CozyMae Floral" width="200" height="84" />
-                    <span class="image-alt">CozyMae Floral</span>
+                    <span className="image-alt">CozyMae Floral</span>
                 </NavLink>
             </h1>
-            <div class="auth-button">
+            <div className="auth-button">
                 <NavLink to="/login">Login</NavLink>
             </div>
             <nav>
