@@ -3,7 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './Pages/Home/home';
 import Dashboard from './Pages/Dashboard/dashboard';
 import Calendar from './Pages/Calendar/calendar';
-import Login from './Pages/LoginRegister/login_register';
+import Login from './Pages/LoginRegister/Login/login';
 import { Header } from './Pages/Components/Header/Header';
 
 

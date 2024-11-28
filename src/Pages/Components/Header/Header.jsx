@@ -42,7 +42,7 @@ export const Header = () => {
                 <span class="image-alt">CozyMae Floral</span>
             </h1>
             <div class="auth-button">
-                <a href="Pages/login.html">Login/Register</a>
+                <NavLink to="/login">Login</NavLink>
             </div>
             <nav>
                 {navItems()}
