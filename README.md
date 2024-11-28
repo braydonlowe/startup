@@ -90,3 +90,4 @@ The following technologies will be used in the following ways:
 -[x] **Header/Footer Implemented** - The header and footer components were converted into their own seperate react elements.
 -[x] **Navigation Change** - The navigation was changed to display dynamically depending on what role a user has. The changing of said role, has not been implemented yet. Implementation can be found in header.jsx.
 -[x] **Dashboard Implemnted** - The dashboard page was implemented in dashboard.jsx. Pages that were previously known as: appointments, contracts, and profile now display there dynamically through the use of tabs. Note: To re-iterate, those pages will no longer display through the normal navigation.
+-[x] **Login Register Implemented** - Login and register pages were implemented in react. The css was altered from the origional.
