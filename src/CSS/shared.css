@@ -13,6 +13,7 @@ html, body {
 
 .wrapper {
     display: flex;
+    flex: 1;
     flex-direction: column;
     min-height: 100vh; /* Ensures the wrapper takes the full viewport height */
     align-items: center;
@@ -60,6 +61,7 @@ nav ul {
     padding-top: 20px 0;
     width: 100%;
     background-color: #f9e4dc;
+    font-size: 12px;
 }
 
 li {
@@ -72,6 +74,7 @@ li {
 
 .paragraph {
     padding: 40px;
+    font-size: 70%;
 }
 
 li:hover {
@@ -82,7 +85,7 @@ li:hover {
 
 .header-text {
     font-family: 'Great Vibes', cursive;
-    font-size: 4em;
+    font-size: 180%;
     color: #9c1b1b;
     padding-bottom: 20px;
 }
@@ -102,6 +105,8 @@ img:not([src]) + .image-alt {
 a {
     text-decoration: none;
     color: #9c1b1b;
+    display: flex;
+    justify-content: center;
 }
 
 .tan-pearl-text {
@@ -112,8 +117,9 @@ a {
 .auth-button {
     position: absolute;
     margin-top: 10px;
-    top: 25px;
+    top: -3px;
     right:20px;
+    font-size:12px;
 
 }
 
@@ -146,6 +152,20 @@ a {
 .spaced-button:hover {
     background-color: #f9e4dc; /* Optional hover effect */
     color: #9c1b1b;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    min-height: 50px;
+}
+
+#logo {
+    align-items: center;
+    width: 15%;
+    min-width: 100px;
+    justify-content: center;
 }
 
 
