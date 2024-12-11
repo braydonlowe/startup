@@ -101,4 +101,10 @@ The following technologies will be used in the following ways:
 -[x] **Get Calendar Availability** - Availability is gotten from the db and displayed on the calendar page.
 -[x] **Post Calendar Availability** - A user can post to calendar availability.
 -[x] **Appointments Page Pulls Calendar Availability** - Selected dates by the user are pulled in to display as appointments for the user.
--[x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API.
+-[x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API. Specifically on the dashboard page, the contracts tab, a PDF service provided by adobe is called.
+
+
+
+## Login Deliverable
+
+-[] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
