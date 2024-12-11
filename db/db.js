@@ -37,9 +37,7 @@ export async function getCalendarAvailability(year, month) {
         const calendarEntity = database.collection("Calendar");
 
         const query = { year, month };
-        console.log(query);
         const availability = await calendarEntity.findOne(query);
-        console.log(availability);
 
         if (!availability) {
             return { days: {} };
@@ -66,8 +64,6 @@ export async function updateCalendarAvailability(who, year2, month2, day, isAvai
         const month = monthString;
 
         const query = { year, month };
-        console.log(query);
-
         let update;
 
         if (isAvailable) {

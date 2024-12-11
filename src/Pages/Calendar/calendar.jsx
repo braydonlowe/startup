@@ -16,14 +16,17 @@ const Calendar = () => {
     useEffect(() => {
         //Can put into different file here.
         const fetchAvailibility = async () => {
-            console.log(`Month: ${selectedDate.month}`)
             const response = await fetch(`/api/calendar/availability?month=${selectedDate.month + 1}&year=${selectedDate.year}`);
             const data = await response.json();
             setAvailabilityData(data);
 
-            const initialAvailability = Object.entries(data.days || {}).reduce((acc, day) => {
-                acc[day.date] = day.isAvailable;
+            console.log("DAYS:")
+            console.log(data.days);
+
+            const initialAvailability = Object.entries(data.days || {}).reduce((acc, [key, value]) => {
+                acc[key] = value.isAvailable;
                 return acc;
+            
             }, {});
             setSelectedDays(initialAvailability);
         };
@@ -48,11 +51,14 @@ const Calendar = () => {
         // Assuming 'who' is the current user; replace this with actual user info
         const who = "user123"; // Replace with actual user data from your context/session
         const month = selectedDate.month + 1; // Adjusted for 1-indexed month
-        const dayClicked = day.split("-")[2]; // Extract the day from the date string
+        const dayString = day.toString();
+        const dayClicked = dayString.split("-")[2]; // Extract the day from the date string
+
+        
 
         // Toggle the availability of the day in the state
         const updatedDays = { ...selectedDays };
-        const isCurrentlyUnavailable = updatedDays[day];
+        const isCurrentlyUnavailable = updatedDays[dayString];
 
         updatedDays[day] = !isCurrentlyUnavailable;
         setSelectedDays(updatedDays);
@@ -94,11 +100,11 @@ const Calendar = () => {
 
         for (let day = 1; day <= totalDays; day++) {
             const dayString = `${selectedDate.year}-${selectedDate.month + 1}-${day}`
-            const isAvailable = selectedDays[dayString] !== undefined ? selectedDays[dayString] : true;
+            const isAvailable = selectedDays[day] !== undefined ? selectedDays[day] : true;
             days.push(
                 <div className={`day ${isAvailable ? "available" : "unavailable"}`}
                     key={day}
-                    onClick={() => handleDayClick(dayString)}
+                    onClick={() => handleDayClick(day)}
                 >
                     {day}
                     <span className="availability">{isAvailable ? "Available" : "Busy"}</span>
