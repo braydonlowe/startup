@@ -16,11 +16,12 @@ const Calendar = () => {
     useEffect(() => {
         //Can put into different file here.
         const fetchAvailibility = async () => {
+            console.log(`Month: ${selectedDate.month}`)
             const response = await fetch(`/api/calendar/availability?month=${selectedDate.month + 1}&year=${selectedDate.year}`);
             const data = await response.json();
             setAvailabilityData(data);
 
-            const initialAvailability = data.days.reduce((acc, day) => {
+            const initialAvailability = Object.entries(data.days || {}).reduce((acc, day) => {
                 acc[day.date] = day.isAvailable;
                 return acc;
             }, {});
@@ -43,11 +44,44 @@ const Calendar = () => {
         setSelectedDate({ ...selectedDate, year: parseInt(event.target.value) });
     };
 
-    const handleDayClick = (day) => {
-        setSelectedDays((prev) => ({
-            ...prev,
-            [day]: !prev[day],
-        }));
+    const handleDayClick = async (day) => {
+        // Assuming 'who' is the current user; replace this with actual user info
+        const who = "user123"; // Replace with actual user data from your context/session
+        const month = selectedDate.month + 1; // Adjusted for 1-indexed month
+        const dayClicked = day.split("-")[2]; // Extract the day from the date string
+
+        // Toggle the availability of the day in the state
+        const updatedDays = { ...selectedDays };
+        const isCurrentlyUnavailable = updatedDays[day];
+
+        updatedDays[day] = !isCurrentlyUnavailable;
+        setSelectedDays(updatedDays);
+
+        try {
+            const year = selectedDate.year;
+            const response = await fetch('/api/calendar/availability', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    who,
+                    year,
+                    month,
+                    day: dayClicked,
+                    isAvailable: updatedDays[day],
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to update availability");
+            }
+            // Optionally, refresh availability data after updating
+            const data = await response.json();
+            setAvailabilityData(data);
+        } catch (error) {
+            console.error("Error updating availability:", error);
+        }
     };
 
     const renderDays = () => {

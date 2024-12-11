@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import  cors from 'cors';
 //Import db methods.
-const { getCalendarAvailability } = require('./db/db');
+import  { getCalendarAvailability, updateCalendarAvailability } from './db/db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -11,10 +12,10 @@ app.use(express.static('public'));
 
 
 var apiRouter = express.Router();
-app.use(`\api`, apiRouter);
+app.use(`/api`, apiRouter);
 
 
-apiRouter.get('/api/calendar/availibility', async (req, res) => {
+apiRouter.get('/calendar/availability', async (req, res) => {
     const { month, year } = req.query;
     try {
         const availability = await getCalendarAvailability(year, month);
@@ -24,6 +25,19 @@ apiRouter.get('/api/calendar/availibility', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch availability' });
     }
 });
+
+apiRouter.post('/calendar/availability', async (req, res) => {
+    console.log('Recieved data:', req.body)
+    const { who, year, month, day, isAvailable } = req.body;
+
+    try {
+        const updateResult = await updateCalendarAvailability(who, year, month, day, isAvailable);
+        res.json({ success: true, updatedDay: { day, isAvailable } });
+    } catch (error) {
+        console.error('Error updating availability:', error);
+        res.status(500).json({ error: 'Failed to update availability' });
+    }
+})
 
 
 app.listen(port, () => {
