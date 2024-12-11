@@ -96,10 +96,9 @@ The following technologies will be used in the following ways:
 ## Service Deliverable
 ➡️ The following is part of my Service Deliverable.
 
-
+-[] **Deploy Simon** - Simon service was successfully deployed to simon.cozymaefloral.com.
 -[x] **Successfully Connected MongoDB** - Database set up with MongoDB.
 -[x] **Get Calendar Availability** - Availability is gotten from the db and displayed on the calendar page.
 -[x] **Post Calendar Availability** - A user can post to calendar availability.
 -[x] **Appointments Page Pulls Calendar Availability** - Selected dates by the user are pulled in to display as appointments for the user.
--[] **Get Profile Information** - Information about the user is displayed on the profile tab of the dashboard.
--[] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API.
+-[x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API.

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Header } from "../Components/Header/Header"
-import { Footer } from "../Components/Footer/Footer"
-import './tabs.css'
-
-
+import { Header } from "../Components/Header/Header";
+import { Footer } from "../Components/Footer/Footer";
+import './tabs.css';
 
 function Dashboard() {
     const [activeTab, setActiveTab] = useState("Appointments");
     const [appointments, setAppointments] = useState([]);
-    const [month, setMonth] = useState([]);
+    const [month, setMonth] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
 
     useEffect(() => {
         if (activeTab === 'Appointments') {
@@ -19,18 +16,22 @@ function Dashboard() {
         }
     }, [activeTab]);
 
+    useEffect(() => {
+        if (activeTab === 'Contracts') {
+            loadAdobeSDK();
+        }
+    }, [activeTab]);
 
     const fetchAppointments = async () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('/api/appointments?who=user123'); // Replace 'user123' with dynamic user identifier if needed.
+            const response = await fetch('/api/appointments?who=user123'); // Replace 'user123' with dynamic user identifier if needed
             if (!response.ok) {
                 throw new Error('Failed to fetch appointments');
             }
             const data = await response.json();
-            setMonth(data.appointments[0].month);
-            console.log(data);
+            setMonth(data.appointments[0].month || null);
             setAppointments(data.appointments[0].days || []);
         } catch (err) {
             setError(err.message);
@@ -39,12 +40,44 @@ function Dashboard() {
         }
     };
 
+    const loadAdobeSDK = () => {
+        // Check if Adobe SDK script is already present
+        const existingScript = document.querySelector('script[src="https://acrobatservices.adobe.com/view-sdk/viewer.js"]');
+        
+        if (!existingScript) {
+            const script = document.createElement("script");
+            script.src = "https://acrobatservices.adobe.com/view-sdk/viewer.js";
+            script.async = true;
+            script.onload = () => {
+                if (window.AdobeDC) {
+                    const adobeDCView = new window.AdobeDC.View({
+                        clientId: "ab3c1957c91e487684787934eb44698b",
+                        divId: "adobe-dc-view",
+                    });
+                    adobeDCView.previewFile(
+                        {
+                            content: {
+                                location: {
+                                    url: "https://acrobatservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf", // Replace with dynamic PDF URL
+                                },
+                            },
+                            metaData: { fileName: "Bodea Brochure.pdf" },
+                        },
+                        { embedMode: "SIZED_CONTAINER" }
+                    );
+                }
+            };
+            document.body.appendChild(script);
+        }
+    };
+    
+
     const renderContent = () => {
         if (activeTab === 'Appointments') {
             return (
                 <div className="tabs-content">
                     <h2 className="header-text">Appointments</h2>
-                    <h3>Your Appointments can be changed on the Calandar Page</h3>
+                    <h3>Your Appointments can be changed on the Calendar Page</h3>
                     {loading ? (
                         <p>Loading appointments...</p>
                     ) : error ? (
@@ -66,12 +99,8 @@ function Dashboard() {
             return (
                 <div className="tabs-content">
                     <h2 className="header-text">Contracts</h2>
-                    <h3>Your Contracts</h3>
-                    <ul>
-                        <li>Contract 1: <a href="contract1.pdf" target="_blank">View</a></li>
-                        <li>Contract 2: <a href="contract2.pdf" target="_blank">View</a></li>
-                        //Contracts are stored in the database
-                    </ul>
+                    <h3>Your Contract</h3>
+                    <div id="adobe-dc-view" style={{ height: "360px", width: "500px" }}></div>
                 </div>
             );
         } else if (activeTab === "Profile") {
@@ -83,8 +112,7 @@ function Dashboard() {
                             <label htmlFor="email">Email:</label>
                             {/* <input type="email" id="email" name="email" value={userEmail} onChange={handleEmailChange} /> */}
                             <label htmlFor="password">New Password:</label>
-                            {/*<input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
- */}
+                            {/*<input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} /> */}
                             <button type="submit">Update Profile</button>
                             <p>Will be updated with actual data when I connect the database</p>
                         </form>
@@ -98,7 +126,7 @@ function Dashboard() {
         <div className="wrapper">
             <Header />
             <div className="data-view">
-            <nav className="tabs-nav">
+                <nav className="tabs-nav">
                     <button
                         className={activeTab === 'Appointments' ? 'active' : ''}
                         onClick={() => setActiveTab('Appointments')}
@@ -118,18 +146,11 @@ function Dashboard() {
                         Profile
                     </button>
                 </nav>
-
                 <main>{renderContent()}</main>
-
             </div>
-           
-
-
-
             <Footer />
         </div>
-    )
+    );
 }
-
 
 export default Dashboard;
