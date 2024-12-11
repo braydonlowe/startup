@@ -107,4 +107,4 @@ The following technologies will be used in the following ways:
 
 ## Login Deliverable
 
--[] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
+- [] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
