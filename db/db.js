@@ -51,6 +51,57 @@ export async function getCalendarAvailability(year, month) {
 }
 
 
+export async function getAppointments(who) {
+    try {
+        const client = await connectToDB();
+        const database = client.db(dbName);
+        const calendarEntity = database.collection("Calendar");
+
+        // Use $objectToArray to transform the days object into an array for querying.
+        const query = {
+            $expr: {
+                $gt: [
+                    {
+                        $size: {
+                            $filter: {
+                                input: { $objectToArray: "$days" }, // Convert days object to an array.
+                                as: "day",
+                                cond: { $eq: ["$$day.v.updatedBy", who] }, // Match updatedBy with the specified user.
+                            },
+                        },
+                    },
+                    0,
+                ],
+            },
+        };
+
+        // Projection to include only necessary fields.
+        const projection = {
+            _id: 1,
+            year: 1,
+            month: 1,
+            days: 1,
+        };
+
+        console.log("Querying appointments with:", query);
+
+        const appointments = await calendarEntity.find(query, { projection }).toArray();
+
+        if (appointments.length === 0) {
+            console.log(`No appointments found for user: ${who}`);
+            return { message: `No appointments found for user: ${who}` };
+        }
+
+        console.log("Appointments fetched:", appointments);
+        return { appointments };
+    } catch (error) {
+        console.error("Error in getAppointments: ", error);
+        throw error;
+    }
+}
+
+
+
 export async function updateCalendarAvailability(who, year2, month2, day, isAvailable) {
     try {
         const client = await connectToDB();

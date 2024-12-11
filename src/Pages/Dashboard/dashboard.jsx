@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../Components/Header/Header"
 import { Footer } from "../Components/Footer/Footer"
 import './tabs.css'
@@ -7,18 +7,59 @@ import './tabs.css'
 
 function Dashboard() {
     const [activeTab, setActiveTab] = useState("Appointments");
+    const [appointments, setAppointments] = useState([]);
+    const [month, setMonth] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+        if (activeTab === 'Appointments') {
+            fetchAppointments();
+        }
+    }, [activeTab]);
+
+
+    const fetchAppointments = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch('/api/appointments?who=user123'); // Replace 'user123' with dynamic user identifier if needed.
+            if (!response.ok) {
+                throw new Error('Failed to fetch appointments');
+            }
+            const data = await response.json();
+            setMonth(data.appointments[0].month);
+            console.log(data);
+            setAppointments(data.appointments[0].days || []);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const renderContent = () => {
         if (activeTab === 'Appointments') {
             return (
                 <div className="tabs-content">
                     <h2 className="header-text">Appointments</h2>
-                    <h3>Manage Your Appointments</h3>
-                    <ul>
-                        <li>Appointment 1: [Date & Time]</li>
-                        <li>Appointment 2: [Date & Time]</li>
-                        // Will be updated with WEBSOCKET
-                     </ul>
+                    <h3>Your Appointments can be changed on the Calandar Page</h3>
+                    {loading ? (
+                        <p>Loading appointments...</p>
+                    ) : error ? (
+                        <p>Error: {error}</p>
+                    ) : Object.keys(appointments).length > 0 ? (
+                        <ul>
+                            {Object.entries(appointments).map(([day, details]) => (
+                                <li key={day}>
+                                    <strong>Month {month} Day {day}</strong>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>No appointments found.</p>
+                    )}
                 </div>
             );
         } else if (activeTab === 'Contracts') {

@@ -1,7 +1,7 @@
 import express from 'express';
 import  cors from 'cors';
 //Import db methods.
-import  { getCalendarAvailability, updateCalendarAvailability } from './db/db.js';
+import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from './db/db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -38,6 +38,22 @@ apiRouter.post('/calendar/availability', async (req, res) => {
         res.status(500).json({ error: 'Failed to update availability' });
     }
 })
+
+apiRouter.get('/appointments', async (req, res) => {
+    const { who } = req.query;
+
+    if (!who) {
+        return res.status(400).json({ error: 'The "who" parameter is required'});
+    }
+
+    try {
+        const appointments = await getAppointments(who);
+        res.json(appointments);
+    } catch (error) {
+        console.error('Error fetching appointments:', error);
+        res.status(500).json({ error: 'Failed to fetch appointments' });
+    }
+});
 
 
 app.listen(port, () => {
