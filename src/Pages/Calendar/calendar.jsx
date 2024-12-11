@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../Components/Header/Header"
 import { Footer } from "../Components/Footer/Footer";
 import "./calendar.css"
@@ -9,6 +9,25 @@ const Calendar = () => {
         month: new Date().getMonth(),
         year: new Date().getFullYear(),
     });
+
+    const [availabilityData, setAvailabilityData] = useState([]);
+    const[selectedDays, setSelectedDays] = useState({});
+
+    useEffect(() => {
+        //Can put into different file here.
+        const fetchAvailibility = async () => {
+            const response = await fetch(`/api/calendar/availability?month=${selectedDate.month + 1}&year=${selectedDate.year}`);
+            const data = await response.json();
+            setAvailabilityData(data);
+
+            const initialAvailability = data.days.reduce((acc, day) => {
+                acc[day.date] = day.isAvailable;
+                return acc;
+            }, {});
+            setSelectedDays(initialAvailability);
+        };
+        fetchAvailibility();
+    }, [selectedDate]); 
 
     const daysInMonth = (month, year) => {
         return new Date(year, month + 1, 0).getDate();
@@ -24,6 +43,13 @@ const Calendar = () => {
         setSelectedDate({ ...selectedDate, year: parseInt(event.target.value) });
     };
 
+    const handleDayClick = (day) => {
+        setSelectedDays((prev) => ({
+            ...prev,
+            [day]: !prev[day],
+        }));
+    };
+
     const renderDays = () => {
         const days = [];
         const totalDays = daysInMonth(selectedDate.month, selectedDate.year);
@@ -33,10 +59,15 @@ const Calendar = () => {
         }
 
         for (let day = 1; day <= totalDays; day++) {
+            const dayString = `${selectedDate.year}-${selectedDate.month + 1}-${day}`
+            const isAvailable = selectedDays[dayString] !== undefined ? selectedDays[dayString] : true;
             days.push(
-                <div className="day" key={day}>
+                <div className={`day ${isAvailable ? "available" : "unavailable"}`}
+                    key={day}
+                    onClick={() => handleDayClick(dayString)}
+                >
                     {day}
-                    <span className="availability">Available</span>
+                    <span className="availability">{isAvailable ? "Available" : "Busy"}</span>
                 </div>
             );
         }
