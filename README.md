@@ -83,25 +83,25 @@ The following technologies will be used in the following ways:
 ➡️ The following is part of my React Deliverable.
 
 
--[x] **Clone the Simon React** - Cloned the Simon React package to my dev enviornment.
--[x] **Deploy Simon React** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
--[x] **App.jsx Implemented** - app.jsx was created to help navigate the react app.
--[x] **home.jsx Implemented** - The file previously known as index.html was converted to home.jsx.
--[x] **Header/Footer Implemented** - The header and footer components were converted into their own seperate react elements.
--[x] **Navigation Change** - The navigation was changed to display dynamically depending on what role a user has. The changing of said role, has not been implemented yet. Implementation can be found in header.jsx.
--[x] **Dashboard Implemnted** - The dashboard page was implemented in dashboard.jsx. Pages that were previously known as: appointments, contracts, and profile now display there dynamically through the use of tabs. Note: To re-iterate, those pages will no longer display through the normal navigation.
--[x] **Login Register Implemented** - Login and register pages were implemented in react. The css was altered from the origional.
+- [x] **Clone the Simon React** - Cloned the Simon React package to my dev enviornment.
+- [x] **Deploy Simon React** - Deployed Simon to simon.cozymaefloral.com as part of the prerequisite.
+- [x] **App.jsx Implemented** - app.jsx was created to help navigate the react app.
+- [x] **home.jsx Implemented** - The file previously known as index.html was converted to home.jsx.
+- [x] **Header/Footer Implemented** - The header and footer components were converted into their own seperate react elements.
+- [x] **Navigation Change** - The navigation was changed to display dynamically depending on what role a user has. The changing of said role, has not been implemented yet. Implementation can be found in header.jsx.
+- [x] **Dashboard Implemnted** - The dashboard page was implemented in dashboard.jsx. Pages that were previously known as: appointments, contracts, and profile now display there dynamically through the use of tabs. Note: To re-iterate, those pages will no longer display through the normal navigation.
+- [x] **Login Register Implemented** - Login and register pages were implemented in react. The css was altered from the origional.
 
 
 ## Service Deliverable
 ➡️ The following is part of my Service Deliverable.
 
 -[] **Deploy Simon** - Simon service was successfully deployed to simon.cozymaefloral.com.
--[x] **Successfully Connected MongoDB** - Database set up with MongoDB.
--[x] **Get Calendar Availability** - Availability is gotten from the db and displayed on the calendar page.
--[x] **Post Calendar Availability** - A user can post to calendar availability.
--[x] **Appointments Page Pulls Calendar Availability** - Selected dates by the user are pulled in to display as appointments for the user.
--[x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API. Specifically on the dashboard page, the contracts tab, a PDF service provided by adobe is called.
+- [x] **Successfully Connected MongoDB** - Database set up with MongoDB.
+- [x] **Get Calendar Availability** - Availability is gotten from the db and displayed on the calendar page.
+- [x] **Post Calendar Availability** - A user can post to calendar availability.
+- [x] **Appointments Page Pulls Calendar Availability** - Selected dates by the user are pulled in to display as appointments for the user.
+- [x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API. Specifically on the dashboard page, the contracts tab, a PDF service provided by adobe is called.
 
 
 

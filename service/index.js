@@ -1,7 +1,7 @@
 import express from 'express';
 import  cors from 'cors';
 //Import db methods.
-import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from './db/db.js';
+import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from '../db/db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
