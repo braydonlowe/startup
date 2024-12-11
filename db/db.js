@@ -64,17 +64,12 @@ export async function updateCalendarAvailability(who, year2, month2, day, isAvai
         const month = monthString;
 
         const query = { year, month };
-        let update;
 
         if (isAvailable) {
             const result = await calendarEntity.updateOne(
                 query,
                 { $unset: { [`days.${day}`]: "" } } // Remove the unavailable day
             );
-
-            if (result.modifiedCount === 0) {
-                throw new Error('Failed to mark the day as available');
-            }
             console.log("SUCCESS!")
 
             return { success: true, day, isAvailable };

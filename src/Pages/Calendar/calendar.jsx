@@ -52,7 +52,6 @@ const Calendar = () => {
         const who = "user123"; // Replace with actual user data from your context/session
         const month = selectedDate.month + 1; // Adjusted for 1-indexed month
         const dayString = day.toString();
-        const dayClicked = dayString.split("-")[2]; // Extract the day from the date string
 
         
 
@@ -74,10 +73,13 @@ const Calendar = () => {
                     who,
                     year,
                     month,
-                    day: dayClicked,
+                    day: dayString,
                     isAvailable: updatedDays[day],
                 }),
             });
+
+            console.log('RESPONSE');
+            console.log(response);
 
             if (!response.ok) {
                 throw new Error("Failed to update availability");
