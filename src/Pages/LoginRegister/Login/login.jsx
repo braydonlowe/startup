@@ -1,8 +1,48 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../login_register.css";
 
+
 export const Login = () => {
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const data = {
+            email: formData.get("email"),
+            password: formData.get("password"),
+        };
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            console.log(response);
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(`Login failed: ${errorData.message || 'Unknown Error'}`);
+                return;
+            }
+
+            const result = await response.json();
+            console.log('Login successful:', result);
+
+            if (result.token) {
+                localStorage.setItem('authToken', result.token);
+            }
+
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    }
+
     return (
         <div className="screen">
                 <main>
@@ -18,7 +58,7 @@ export const Login = () => {
                     </a>
                     </div>
                     <div className="labels">
-                        <form action="/login" method="POST">
+                        <form onSubmit={handleSubmit} action="/api/auth/login" method="POST">
                             <label htmlFor="email">Email:</label>
                             <input type="email" id="email" name="email" required />
                             <label htmlFor="password">Password:</label>

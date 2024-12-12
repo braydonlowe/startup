@@ -1,7 +1,8 @@
 import express from 'express';
 import  cors from 'cors';
+import bcrypt from 'bcrypt';
 //Import db methods.
-import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from './db.js';
+import  { getCalendarAvailability, updateCalendarAvailability, getAppointments, postLogin, registerUser } from './db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -41,8 +42,6 @@ apiRouter.post('/calendar/availability', async (req, res) => {
 
 apiRouter.get('/appointments', async (req, res) => {
     const { who } = req.query;
-    console.log('HERE');
-
     if (!who) {
         return res.status(400).json({ error: 'The "who" parameter is required'});
     }
@@ -55,6 +54,58 @@ apiRouter.get('/appointments', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch appointments' });
     }
 });
+
+
+//Login stuff
+
+apiRouter.post('/auth/login', async (req, res) => {
+    const {email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ error: 'Email and password are required.'})
+    }
+    console.log("HERE");
+    try {
+        const userToken = await postLogin(email, password);
+        res.json(userToken);
+      } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ error: 'Server error' });
+      }
+
+});
+
+apiRouter.post('/auth/register', async (req, res) => {
+    const { email, password, confirmPassword } = req.body;
+
+    // Basic validation
+    if (!email || !password || !confirmPassword) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    if (password !== confirmPassword) {
+        return res.status(400).json({ error: 'Passwords do not match' });
+    }
+
+    try {
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Call the registerUser function to save the user
+        const newUser = await registerUser(email, hashedPassword);
+
+        res.status(201).json({ success: true, message: 'User registered successfully', user: newUser });
+    } catch (error) {
+        console.error('Error during registration:', error);
+
+        // Handle duplicate email error or any other errors
+        if (error.message === 'Email already in use') {
+            return res.status(409).json({ error: 'Email already in use' });
+        }
+
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 
 
 app.listen(port, () => {

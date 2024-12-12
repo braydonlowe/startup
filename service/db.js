@@ -1,5 +1,7 @@
 import { MongoClient } from 'mongodb';
 import config from './dbConfig.json' assert {type: 'json'};
+import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt';
 
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 //const client = new MongoClient(url);
@@ -96,6 +98,72 @@ export async function getAppointments(who) {
         return { appointments };
     } catch (error) {
         console.error("Error in getAppointments: ", error);
+        throw error;
+    }
+}
+
+
+export async function postLogin(username, password) {
+    try {
+        const client = await connectToDB();
+        const database = client.db(dbName);
+        const userEntity = database.collection("User");
+        const authEntity = database.collection("Auth");
+
+        console.log(username);
+        const email = username;
+
+        const user = await userEntity.findOne({ email });
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw new Error('Invalid Password');
+        }
+
+        const token = uuidv4();
+
+        const authEntry = { username, token, createdAt: new Date() };
+        await authEntity.insertOne(authEntry);
+
+        return {success: true, token};
+    } catch (error) {
+        console.error("Error during login: ", error);
+        throw new Error('Login failed');
+    }
+}
+
+
+export async function registerUser(email, hashedPassword) {
+    try {
+        const client = await connectToDB();
+        const database = client.db(dbName);
+        const userEntity = database.collection("User");
+
+        // Check if the user already exists
+        const existingUser = await userEntity.findOne({ email });
+        if (existingUser) {
+            throw new Error('Email already in use');
+        }
+
+        // Create a new user
+        const newUser = {
+            email,
+            password: hashedPassword,
+            createdAt: new Date(),
+        };
+
+        const result = await userEntity.insertOne(newUser);
+        if (result.insertedCount === 0) {
+            throw new Error('Failed to register user');
+        }
+
+        console.log('User registered successfully:', newUser);
+        return { id: result.insertedId, email };
+    } catch (error) {
+        console.error('Error in registerUser: ', error);
         throw error;
     }
 }
