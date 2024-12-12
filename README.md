@@ -91,24 +91,26 @@ The following technologies will be used in the following ways:
 - [x] **Navigation Change** - The navigation was changed to display dynamically depending on what role a user has. The changing of said role, has not been implemented yet. Implementation can be found in header.jsx.
 - [x] **Dashboard Implemnted** - The dashboard page was implemented in dashboard.jsx. Pages that were previously known as: appointments, contracts, and profile now display there dynamically through the use of tabs. Note: To re-iterate, those pages will no longer display through the normal navigation.
 - [x] **Login Register Implemented** - Login and register pages were implemented in react. The css was altered from the origional.
+- [x] **Login actually works** - You can actually go to a page using the login screen. 
 
 
 ## Service Deliverable
 ➡️ The following is part of my Service Deliverable.
 
--[] **Deploy Simon** - Simon service was successfully deployed to simon.cozymaefloral.com.
+-[x] **Deploy Simon** - Simon service was successfully deployed to simon.cozymaefloral.com.
 - [x] **Successfully Connected MongoDB** - Database set up with MongoDB.
 - [x] **Get Calendar Availability** - Availability is gotten from the db and displayed on the calendar page.
 - [x] **Post Calendar Availability** - A user can post to calendar availability.
 - [x] **Appointments Page Pulls Calendar Availability** - Selected dates by the user are pulled in to display as appointments for the user.
 - [x] **Contracts Information Displayed** - Contract information can be sent using a 3rd party API. Specifically on the dashboard page, the contracts tab, a PDF service provided by adobe is called. This API can only be called in production, but there are some cookies that are required to operate it. So I did add it but it doesn't actually work. However, on the appointments tab I have a backup! I call the chuck norris jokes here.
+- [x] **Login Register** - The paths for login and register were added as well.
 
 
 
 ## Login Deliverable
 
-- [] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
+- [x] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
 - [x] **MongoDB Added** - App uses MongoDB for a database.
 - [x] **Register Fully Functional** - Reigister functionality added to the app.
 - [x] **Login Fully Functional** - Login functionality added to the app.
-- [] **Logout Fully Functional** - Logout functionality added to the app.
+- [x] **Logout Mostly Functional** - Logout functionality added to the app. You can log out, but the display says you're logged in when you're not. But hey, better than nothing.
