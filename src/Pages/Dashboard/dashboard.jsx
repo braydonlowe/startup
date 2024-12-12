@@ -9,6 +9,7 @@ function Dashboard() {
     const [month, setMonth] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [joke, setJoke] = useState(null);
 
     useEffect(() => {
         if (activeTab === 'Appointments') {
@@ -73,6 +74,25 @@ function Dashboard() {
     };
     
 
+    const fetchJoke = async () => {
+        try {
+            const response = await fetch('https://api.chucknorris.io/jokes/random?category=dev');
+            if (!response.ok) {
+                throw new Error('Failed to fetch Norris');
+            }
+            const data = await response.json();
+            setJoke(data.value);
+        } catch (err) {
+            console.error('Error fetching joke:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchJoke(); // Fetch a joke on initial render
+      }, []);
+
+
+
     const renderContent = () => {
         if (activeTab === 'Appointments') {
             return (
@@ -94,6 +114,9 @@ function Dashboard() {
                     ) : (
                         <p>No appointments found.</p>
                     )}
+                    <h3>Chuck Norris Jokes Backup for Points</h3>
+                    {joke && <p>{joke}</p>} {/* Display the fetched joke if available */}
+
                 </div>
             );
         } else if (activeTab === 'Contracts') {
