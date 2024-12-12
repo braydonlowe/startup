@@ -33,7 +33,8 @@ export const Login = () => {
             console.log('Login successful:', result);
 
             if (result.token) {
-                localStorage.setItem('authToken', result.token);
+                sessionStorage.setItem('authToken', result.token);
+                sessionStorage.setItem('userName', formData.get("email"));
             }
 
             navigate('/dashboard');

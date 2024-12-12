@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "../Components/Header/Header";
 import { Footer } from "../Components/Footer/Footer";
+import { getEmail } from "../../../service/serviceMethods";
 import './tabs.css';
 
 function Dashboard() {
@@ -10,6 +11,15 @@ function Dashboard() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [joke, setJoke] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
+
+    useEffect(() => {
+        const fetchEmail = async () => {
+            const email = await getEmail();
+            setUserEmail(email);
+        }
+        fetchEmail();
+    });
 
     useEffect(() => {
         if (activeTab === 'Appointments') {
@@ -27,14 +37,23 @@ function Dashboard() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('/api/appointments?who=user123'); // Replace 'user123' with dynamic user identifier if needed
+            const response = await fetch(`/api/appointments?who=${userEmail}`);
             console.log(response);
             if (!response.ok) {
                 throw new Error('Failed to fetch appointments');
             }
             const data = await response.json();
+            console.log(data.appointments[0].days);
+            console.log(userEmail);
             setMonth(data.appointments[0].month || null);
-            setAppointments(data.appointments[0].days || []);
+            //Iterate over each thing to make sure it's by my user
+
+            const filteredAppointments = Object.entries(data.appointments[0].days)
+                .filter(([day, appointment]) => appointment.updatedBy === userEmail)
+                .map(([day, appointment]) => ({ day, ...appointment }));
+
+            console.log(filteredAppointments)
+            setAppointments(filteredAppointments);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -101,13 +120,11 @@ function Dashboard() {
                     <h3>Your Appointments can be changed on the Calendar Page</h3>
                     {loading ? (
                         <p>Loading appointments...</p>
-                    ) : error ? (
-                        <p>Error: {error}</p>
                     ) : Object.keys(appointments).length > 0 ? (
                         <ul>
                             {Object.entries(appointments).map(([day, details]) => (
                                 <li key={day}>
-                                    <strong>Month {month} Day {day}</strong>
+                                    <strong>Month {month} Day {details.day}</strong>
                                 </li>
                             ))}
                         </ul>
@@ -134,11 +151,7 @@ function Dashboard() {
                         <h2 className="header-text">Profile Settings</h2>
                         <form action="/update-profile" method="POST">
                             <label htmlFor="email">Email:</label>
-                            {/* <input type="email" id="email" name="email" value={userEmail} onChange={handleEmailChange} /> */}
-                            <label htmlFor="password">New Password:</label>
-                            {/*<input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} /> */}
-                            <button type="submit">Update Profile</button>
-                            <p>Will be updated with actual data when I connect the database</p>
+                            <p>{userEmail ? userEmail : "Email not available"}</p> {/* Display the email or a fallback message */}
                         </form>
                     </main>
                 </div>

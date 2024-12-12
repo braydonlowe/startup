@@ -107,6 +107,30 @@ apiRouter.post('/auth/register', async (req, res) => {
 });
 
 
+apiRouter.post('/auth/logout', async (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+        return res.status(400).json({ error: 'Token is required for logout' });
+    }
+
+    try {
+        const result = await logout(token);
+        res.json({ success: true, message: 'Logged out successfully' });
+    } catch (error) {
+        console.error('Error during logout:', error);
+
+        // Handle cases where the token might not exist
+        if (error.message === 'Auth token not found or already logged out') {
+            return res.status(404).json({ error: 'Invalid or expired token' });
+        }
+
+        res.status(500).json({ error: 'Server error during logout' });
+    }
+});
+
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

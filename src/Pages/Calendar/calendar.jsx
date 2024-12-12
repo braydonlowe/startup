@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "../Components/Header/Header"
 import { Footer } from "../Components/Footer/Footer";
-import "./calendar.css"
+import { getEmail } from "../../../service/serviceMethods";
+import "./calendar.css";
+
 
 
 const Calendar = () => {
@@ -12,6 +14,16 @@ const Calendar = () => {
 
     const [availabilityData, setAvailabilityData] = useState([]);
     const[selectedDays, setSelectedDays] = useState({});
+    const [userEmail, setUserEmail] = useState(null);
+
+    useEffect(() => {
+        const fetchEmail = async () => {
+            const email = await getEmail();
+            setUserEmail(email);
+        }
+        fetchEmail();
+    });
+
 
     useEffect(() => {
         //Can put into different file here.
@@ -49,7 +61,7 @@ const Calendar = () => {
 
     const handleDayClick = async (day) => {
         // Assuming 'who' is the current user; replace this with actual user info
-        const who = "user123"; // Replace with actual user data from your context/session
+        const who = userEmail; // Replace with actual user data from your context/session
         const month = selectedDate.month + 1; // Adjusted for 1-indexed month
         const dayString = day.toString();
 

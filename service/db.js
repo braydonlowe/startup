@@ -169,6 +169,29 @@ export async function registerUser(email, hashedPassword) {
 }
 
 
+export async function logout(token) {
+    try {
+        const client = await connectToDB();
+        const database = client.db(dbName);
+        const authEntity = database.collection("Auth");
+
+        // Delete the auth token from the Auth collection
+        const result = await authEntity.deleteOne({ token });
+
+        if (result.deletedCount === 0) {
+            throw new Error('Token not found or already logged out');
+        }
+
+        console.log(`Successfully logged out token: ${token}`);
+        return { success: true, message: 'Logged out successfully' };
+    } catch (error) {
+        console.error('Error during logout: ', error);
+        throw new Error('Logout failed');
+    }
+}
+
+
+
 
 export async function updateCalendarAvailability(who, year2, month2, day, isAvailable) {
     try {

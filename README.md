@@ -108,3 +108,7 @@ The following technologies will be used in the following ways:
 ## Login Deliverable
 
 - [] **Deploy Simon** - Simon login was successfully deployed to simon.cozymaefloral.com.
+- [x] **MongoDB Added** - App uses MongoDB for a database.
+- [x] **Register Fully Functional** - Reigister functionality added to the app.
+- [x] **Login Fully Functional** - Login functionality added to the app.
+- [] **Logout Fully Functional** - Logout functionality added to the app.
