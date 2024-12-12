@@ -7,6 +7,8 @@ export async function getCalendar(selectedDate) {
 
 export async function getAuthToken() {
     const token = sessionStorage.getItem('authToken');
+    console.log('FROM SERVMETH');
+    console.log(token);
     if (!token) {
         return null;
     }

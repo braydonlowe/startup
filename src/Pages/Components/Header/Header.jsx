@@ -13,11 +13,13 @@ export const Header = () => {
             setUserEmail(email);
         }
         fetchEmail();
-    });
+    }, []);
 
     const handleLogout = async () => {
+        console.log("LOGOUT");
         try {
-            const token = getAuthToken(); // You should have a way to get the user's token (e.g., from localStorage)
+            const token = await getAuthToken();
+            console.log(token);
             const response = await fetch("/api/auth/logout", {
                 method: "POST",
                 headers: {
@@ -35,6 +37,10 @@ export const Header = () => {
                 // Handle successful logout (e.g., redirect to login page)
                 setUserEmail(null);  // Clear the user email state
                 console.log("Logged out successfully");
+                console.log('HERE');
+                sessionStorage.setItem('authToken', null);
+                sessionStorage.setItem('userName', null);
+
             }
         } catch (error) {
             console.error("Logout error:", error);

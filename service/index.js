@@ -2,7 +2,7 @@ import express from 'express';
 import  cors from 'cors';
 import bcrypt from 'bcrypt';
 //Import db methods.
-import  { getCalendarAvailability, updateCalendarAvailability, getAppointments, postLogin, registerUser } from './db.js';
+import  { getCalendarAvailability, updateCalendarAvailability, getAppointments, postLogin, registerUser, logout } from './db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
