@@ -1,7 +1,7 @@
 import express from 'express';
 import  cors from 'cors';
 //Import db methods.
-import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from '../db/db.js';
+import  { getCalendarAvailability, updateCalendarAvailability, getAppointments } from './db.js';
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -41,6 +41,7 @@ apiRouter.post('/calendar/availability', async (req, res) => {
 
 apiRouter.get('/appointments', async (req, res) => {
     const { who } = req.query;
+    console.log('HERE');
 
     if (!who) {
         return res.status(400).json({ error: 'The "who" parameter is required'});

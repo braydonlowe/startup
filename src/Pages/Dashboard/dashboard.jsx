@@ -27,6 +27,7 @@ function Dashboard() {
         setError(null);
         try {
             const response = await fetch('/api/appointments?who=user123'); // Replace 'user123' with dynamic user identifier if needed
+            console.log(response);
             if (!response.ok) {
                 throw new Error('Failed to fetch appointments');
             }
